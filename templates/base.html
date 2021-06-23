@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="img"><img src="{% static 'images/dollar.png' %}" alt="dollar img"></li>
+            <li><a href="/">Expenses Tracker</a></li>
+            {% block profile %} {% endblock %}
+        </ul>
+    </nav>
+    <div class="body">
+    {% block content %}
+    {% endblock %}
+    </div>
+</body>
+<footer>
+    <div>Python Web Basics Exam Preparation @SoftUni</div>
+</footer>
+</html>

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Home Page{% endblock %}
+{% block profile %}<li class="right"><a href="{% url 'profile page' %}">Profile</a></li>{% endblock %}
+{% load static %}
+{% block content %}
+    <div>
+        <h1>Summary</h1>
+        {% for expense in expenses %}
+            <h1>
+                <ul class="expenses-list">
+                    {{ expense.price }}
+                </ul>
+            </h1>
+        {% endfor %}
+    </div>
+    <h1>My Expenses</h1>
+    <a href="{% url 'expanse create page' %}">Add Expense</a>
+    <div class="expenses-container">
+        {% for expense in expenses %}
+            <div class="expense-container">
+                <h2>{{ expense.title }}</h2>
+                <hr>
+                <img src="{{ expense.image_url }}" alt="expense img">
+                <p>{{ expense.description }}</p>
+                <div class="expense-detail">
+                    <div>
+                        <p>{{ expense.price }}$</p>
+                    </div>
+                    <div class="right">
+                        <a class="button edit" href="{% url 'expense edit page' expense.id %}">Edit</a>
+                        <a class="button delete" href="{% url 'expense delete page' expense.id %}">Delete</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
