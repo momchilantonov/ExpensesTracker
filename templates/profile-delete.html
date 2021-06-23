@@ -20,6 +20,7 @@
         
 <h1>Are you sure you want to delete your profile?</h1>
 <form method="POST">
+    {% csrf_token %}
 <input type="hidden" name="csrfmiddlewaretoken" value="fewGdgFCGlbXTIgYQJKFmURDSd5iqPnic2eEdlplu3qQSU6nCpeMdM4pau3rc0w3">
 <button class="delete">Confirm</button>
 </form>

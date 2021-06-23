@@ -21,6 +21,7 @@
 <h1>Create Expense</h1>
 <div class="form">
     <form method="POST">
+        {% csrf_token %}
         <input type="hidden" name="csrfmiddlewaretoken" value="HUrRfZ1Xv8I1kg0RCRhg5I8sTJMRfcaLEI9Pf4LGjQXUjsQgoxLnWAleb0K01njw">
         <label for="name">Title</label>
         <input type="text" name="title" maxlength="50" required="" id="id_title">

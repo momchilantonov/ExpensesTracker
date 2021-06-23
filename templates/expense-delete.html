@@ -21,6 +21,7 @@
 <h1>Delete Expense</h1>
 <div class="form">
     <form method="POST">
+        {% csrf_token %}
         <input type="hidden" name="csrfmiddlewaretoken" value="hwapnt8nZjnQuJ2M6SZBuXGgOwc3fZlrekSnnyS6N1CJtVSbSytIlPT26Nac1auc"> 
         <label for="name">Title</label>
         <input type="text" name="title" value="Electrical Piano" maxlength="50" disabled="" required="" id="id_title">

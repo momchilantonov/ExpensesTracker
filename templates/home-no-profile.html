@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 {% block title %}Home Page{% endblock %}
+{% block profile %}
+{% endblock %}
 {% block content %}
     <h1>Enter your data</h1>
     <div class="form">
         <form method="POST">
-            {% csrf_token %}
-            <input type="hidden" name="csrfmiddlewaretoken"
-                   value="97MmAxmrs7yPXUamEdIgRY80OHEP383f6VukAC6agPNIW60LqTcnIQlM6YCYPjc0">
+        {% csrf_token %}
             <label for="budget">Budget</label>
-            {{ profile.budget }}
+            {{ form.budget }}
             <label for="firstName">First Name</label>
-            {{ profile.first_name }}
+            {{ form.first_name }}
             <label for="lastName">Last Name</label>
-            {{ profiel.last_name }}
+            {{ form.last_name }}
             <input type="submit" value="Submit">
         </form>
     </div>

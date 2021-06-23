@@ -3,35 +3,41 @@
 {% block profile %}<li class="right"><a href="{% url 'profile page' %}">Profile</a></li>{% endblock %}
 {% load static %}
 {% block content %}
-    <div>
-        <h1>Summary</h1>
-        {% for expense in expenses %}
+    {% if expenses %}
+        <div>
+            <h1>Summary</h1>
             <h1>
                 <ul class="expenses-list">
-                    {{ expense.price }}
+                    <li class="blue">{{ profile.budget }}$</li>
+                    {% for expense in expenses %}
+                        <li class="red">{{ expense.price }}$</li>
+                    {% endfor %}
+                    <li class="green">{{ profile.budget_left }}$ left</li>
                 </ul>
             </h1>
-        {% endfor %}
-    </div>
+        </div>
+    {% endif %}
     <h1>My Expenses</h1>
-    <a href="{% url 'expanse create page' %}">Add Expense</a>
+    <a class="button" href="{% url 'expanse create page' %}">Add Expense</a>
     <div class="expenses-container">
-        {% for expense in expenses %}
-            <div class="expense-container">
-                <h2>{{ expense.title }}</h2>
-                <hr>
-                <img src="{{ expense.image_url }}" alt="expense img">
-                <p>{{ expense.description }}</p>
-                <div class="expense-detail">
-                    <div>
-                        <p>{{ expense.price }}$</p>
-                    </div>
-                    <div class="right">
-                        <a class="button edit" href="{% url 'expense edit page' expense.id %}">Edit</a>
-                        <a class="button delete" href="{% url 'expense delete page' expense.id %}">Delete</a>
+        {% if expenses %}
+            {% for expense in expenses %}
+                <div class="expense-container">
+                    <h2>{{ expense.title }}</h2>
+                    <hr>
+                    <img src="{{ expense.image_url }}" alt="expense img">
+                    <p>{{ expense.description }}</p>
+                    <div class="expense-detail">
+                        <div>
+                            <p>{{ expense.price }}$</p>
+                        </div>
+                        <div class="right">
+                            <a class="button edit" href="{% url 'expense edit page' expense.id %}">Edit</a>
+                            <a class="button delete" href="{% url 'expense delete page' expense.id %}">Delete</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        {% endif %}
     </div>
 {% endblock %}
