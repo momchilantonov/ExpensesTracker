@@ -16,7 +16,7 @@ class ExpenseForm(forms.ModelForm):
             'image_url': forms.URLInput(
                 attrs={
                     'class': 'form_control',
-                    'placeholder': "Enter Img URL",
+                    'placeholder': "Enter Image URL",
                 }
             ),
             'description': forms.Textarea(

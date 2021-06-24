@@ -6,14 +6,16 @@
     <h1>Enter your data</h1>
     <div class="form">
         <form method="POST">
-        {% csrf_token %}
+            {% csrf_token %}
             <label for="budget">Budget</label>
             {{ form.budget }}
             <label for="firstName">First Name</label>
             {{ form.first_name }}
             <label for="lastName">Last Name</label>
             {{ form.last_name }}
-            <input type="submit" value="Submit">
+            <input type="submit"
+                   style="text-decoration: none; text-align: center; padding-top: 10px; height: 45px; width: 150px"
+                   value="Submit">
         </form>
     </div>
 {% endblock %}

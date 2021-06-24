@@ -1,35 +1,37 @@
 {% extends 'base.html' %}
 {% block title %}Home Page{% endblock %}
-{% block profile %}<li class="right"><a href="{% url 'profile page' %}">Profile</a></li>{% endblock %}
+{% block profile %}
+    <li class="right"><a href="{% url 'profile page' %}">Profile</a></li>{% endblock %}
 {% load static %}
 {% block content %}
     {% if expenses %}
         <div>
             <h1>Summary</h1>
             <h1>
-                <ul class="expenses-list">
-                    <li class="blue">{{ profile.budget }}$</li>
+                <ul class="expenses-list" style="flex-wrap: wrap;">
+                    <li class="blue">{{ profile.budget }}BGN</li>
                     {% for expense in expenses %}
-                        <li class="red">{{ expense.price }}$</li>
+                        <li class="red">-{{ expense.price }}BGN</li>
                     {% endfor %}
-                    <li class="green">{{ profile.budget_left }}$ left</li>
+                    <li class="green">={{ profile.budget_left }}BGN left</li>
                 </ul>
             </h1>
         </div>
     {% endif %}
     <h1>My Expenses</h1>
-    <a class="button" href="{% url 'expanse create page' %}">Add Expense</a>
-    <div class="expenses-container">
+    <a class="button" href="{% url 'expanse create page' %}"
+       style="text-decoration: none; text-align: center; padding-top: 14px; height: 20px; width: 150px">Add Expense</a>
+    <div class="expenses-container" style="flex-wrap: wrap;">
         {% if expenses %}
             {% for expense in expenses %}
-                <div class="expense-container">
+                <div class="expense-container" style="margin-bottom: 20px">
                     <h2>{{ expense.title }}</h2>
                     <hr>
                     <img src="{{ expense.image_url }}" alt="expense img">
                     <p>{{ expense.description }}</p>
                     <div class="expense-detail">
                         <div>
-                            <p>{{ expense.price }}$</p>
+                            <p>{{ expense.price }} BGN</p>
                         </div>
                         <div class="right">
                             <a class="button edit" href="{% url 'expense edit page' expense.id %}">Edit</a>

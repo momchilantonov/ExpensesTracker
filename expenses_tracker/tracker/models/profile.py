@@ -8,5 +8,5 @@ class Profile(models.Model):
     budget = models.IntegerField()
 
     def budget_left(self):
-        total_expenses = sum(exp.price for exp in Expense.objects.all())
-        return self.budget-total_expenses
+        total_expenses_cost = sum(expense.price for expense in Expense.objects.all())
+        return f'{self.budget-total_expenses_cost:.2f}'

@@ -5,13 +5,14 @@ from expenses_tracker.tracker.views.common_views import show_form, save_form
 
 
 def home_page_with_profile(req):
+    temp = 'home-with-profile.html'
     profile = Profile.objects.first()
     expenses = Expense.objects.all()
     context = {
         'profile': profile,
         'expenses': expenses,
     }
-    return render(req, 'home-with-profile.html', context)
+    return render(req, temp, context)
 
 
 def home_page_without_profile(req):
